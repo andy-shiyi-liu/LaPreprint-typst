@@ -195,6 +195,7 @@
   if subtitle != none {
     parbreak()
     box(text(14pt, fill: gray.darken(30%), subtitle))
+    parbreak()
   }
   // Authors and affiliations
   if authors.len() > 0 {
@@ -212,6 +213,7 @@
     })
   }
   if affiliations.len() > 0 {
+    linebreak()
     box(inset: (bottom: 10pt), {
       affiliations.map(affiliation => {
         super(affiliation.id)
