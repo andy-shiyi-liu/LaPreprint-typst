@@ -198,10 +198,10 @@
   if subtitle != none {
     parbreak()
     box(text(14pt, fill: gray.darken(30%), subtitle))
-    parbreak()
   }
   // Authors and affiliations
   if authors.len() > 0 {
+    parbreak()
     box(inset: (y: 10pt), {
       authors.map(author => {
         text(11pt, weight: "semibold", author.name)
