@@ -22,8 +22,10 @@
   // A DOI link, shown in the header on the first page. Should be just the DOI, e.g. `10.10123/123456` ,not a URL
   doi: none,
   heading-numbering: "1.a.i",
+  // Show an warning about internal manuscript on the first page.
+  internal: false,
   // Show an Open Access badge on the first page, and support open science, default is true, because that is what the default should be.
-  open-access: true,
+  open-access: false,
   // A list of keywords to display after the abstract
   keywords: (),
   // The "kind" of the content, e.g. "Original Research", this is shown as the title of the margin content on the first page.
@@ -83,7 +85,8 @@
     header: locate(loc => {
       if(loc.page() == 1) {
         let headers = (
-          if (open-access) {smallcaps[Open Access]},
+          if (internal) {smallcaps[#text(fill: red, size: 15pt)[Internal Manuscript, Do NOT Distribute!]]}
+          else if (open-access) {smallcaps[Open Access]},
           if (doi != none) { link("https://doi.org/" + doi, "https://doi.org/" + doi)}
         )
         return align(left, text(size: 8pt, fill: gray, headers.filter(header => header != none).join(spacer)))
