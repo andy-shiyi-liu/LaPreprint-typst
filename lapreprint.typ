@@ -141,7 +141,7 @@
       // We don't want to number of the acknowledgment section.
       #let is-ack = it.body in ([Acknowledgment], [Acknowledgement])
       // #set align(center)
-      #set text(if is-ack { 10pt } else { 12pt })
+      #set text(if is-ack { 10pt } else { 12pt }, weight: "bold")
       #show: smallcaps
       #v(20pt, weak: true)
       #if it.numbering != none and not is-ack {
@@ -149,27 +149,28 @@
         [.]
         h(7pt, weak: true)
       }
-      #it.body
+      #text(it.body, weight: "bold")
       #v(13.75pt, weak: true)
     ] else if it.level == 2 [
       // Second-level headings are run-ins.
       #set par(first-line-indent: 0pt)
-      #set text(style: "italic")
+      #set text(style: "italic", weight: "bold")
       #v(10pt, weak: true)
       #if it.numbering != none {
         numbering(heading-numbering, ..levels)
         [.]
         h(7pt, weak: true)
       }
-      #it.body
+      #text(it.body, weight: "bold")
       #v(10pt, weak: true)
     ] else [
       // Third level headings are run-ins too, but different.
       #if it.level == 3 {
+        set text(style: "italic", weight: "bold")
         numbering(heading-numbering, ..levels)
         [. ]
       }
-      _#(it.body):_
+      _#text(it.body, weight: "bold"):_
     ]
   })
 
